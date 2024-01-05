@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HentaiXpert</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+        body{
+            background: #1e1e1e;
+            color: #fff;
+            font-family: 'Raleway', open-sans;
+            transition: height 1s ease-out;
+        }
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 50px 500px;
+        }
+
+        h1{
+            text-align: center;
+            font-size: 90px;
+        }
+
+        #search-results {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #search-results img{
+            width: 200px;
+        }
+
+        #search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #fff;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 8px;
+        }
+
+        #search-button {
+            font-family: 'Raleway', sans-serif;
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .result{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            border: 1px solid #fff;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .result a{
+            position: absolute;
+            bottom: 20px;
+            text-decoration: none;
+            text-decoration: underline;
+            color: #fff;
+        }
+
+        .feeling-lucky:hover{
+            transform: translate(10px, -10px);
+        }
+    </style>
+</head>
+<body>
+    <h1 id="header1">HentaiXpert</h1>
+    <h2 id="header2" style="margin-top: -40px; text-align: center;">Search your favourite anime character</h2>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search...">
+        <button id="search-button">Search</button>
+    </div>
+    <div id="search-results"></div>
+    <div class="feeling-lucky-container" style="display: flex; justify-content: center;">
+        <button class="feeling-lucky" onclick="redirect()"
+        style="position: absolute;
+            bottom: 30px;
+            border: none; 
+            border: 2.5px solid #fff; 
+            background: transparent; 
+            font-size: 24px;
+            color: #fff; 
+            padding: 15px;
+            cursor: pointer;"
+    >I'm Feeling Lucky</button>
+    </div>
+    <script>
+        document.getElementById('search-button').addEventListener('click', function () {
+            var searchTerm = document.getElementById('search-input').value;
+
+            // You can replace this with your actual search logic
+            // For this example, let's assume you have predefined search results
+            var searchResults = [
+                { link: 'https://nhentai.net/search/?q=' + searchTerm, logo: 'https://i.imgur.com/uLAimaY.png' },
+                { link: 'https://rule34.xxx/index.php?page=post&s=list&tags=' + searchTerm, logo: 'https://rule34.xxx/images/header2.png' },
+                { link: 'https://www.xvideos.com/?k=' + searchTerm, logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/XVideos_logo.svg/120px-XVideos_logo.svg.png' },
+                { link: 'https://www.pornhub.com/video/search?search=' + searchTerm, logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Pornhub-logo.svg/297px-Pornhub-logo.svg.png' }
+            ];
+
+            // Clear previous search results
+            clearSearchResults();
+
+            // Display the new search results
+            displaySearchResults(searchResults);
+        });
+
+        function clearSearchResults() {
+            var resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = ''; // Clear previous search results
+        }
+
+        function displaySearchResults(results) {
+            var resultsContainer = document.getElementById('search-results');
+        
+            results.forEach(function (result) {
+                var resultDiv = document.createElement('div');
+                resultDiv.classList.add('result');
+
+                var resultImage = document.createElement('img');
+                resultImage.src = result.logo;
+            
+                var resultLink = document.createElement('a');
+                resultLink.href = result.link;
+                resultLink.textContent = 'Take Me ⬈';
+            
+                // Open the link in a new tab/window
+                resultLink.target = '_blank';
+            
+                resultDiv.appendChild(resultImage);
+                resultDiv.appendChild(resultLink);
+                resultsContainer.appendChild(resultDiv);
+            });
+        }
+
+        function redirect() {
+            var randomNumber = Math.floor(1 + Math.random() * 489096);
+            var redirectURL = 'https://www.nhentai.net/g/' + randomNumber;
+            window.location.href = redirectURL;
+        }
+    </script>
+</body>
+</html>
