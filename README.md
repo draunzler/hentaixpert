@@ -7,4 +7,4 @@
 
 Uses 4 websites to fetch whatever anime charcters you search for
 
-Use the `I'm feeling lucky` button to randomly fetch a doujinshi in `nhentai.net`
+Use the `I'm feeling lucky` button to fetch a doujinshi with randomly generated code in `nhentai.net`
