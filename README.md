@@ -4,6 +4,7 @@
 - When clicked on the search bar, the outline doesn't show anymore
 - Typewriter text effect added to the text below `HentaiXpert` header
 
+
 ## Update 0.2.1
 - The `I'm feeling lucky` button is placed on top of the search results, right below the search bar
 - color of search button changed and now has hover effect
