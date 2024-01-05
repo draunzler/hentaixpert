@@ -44,6 +44,10 @@
             padding: 8px;
         }
 
+        #search-input:focus{
+            outline: none;
+        }
+
         #search-button {
             position: relative;
             font-family: 'Raleway', sans-serif;
@@ -102,9 +106,9 @@
     </style>
 </head>
 <body>
-    <p style="position: absolute; top: 0; left: 0;">v 0.2.1</p>
+    <p style="position: absolute; top: 0; left: 0;">v 0.2.2</p>
     <h1 id="header1">HentaiXpert</h1>
-    <h2 id="header2" style="margin-top: -40px; text-align: center;">Search your favourite anime character</h2>
+    <h2 id="header2" style="margin-top: -40px; text-align: center;">Search your favourite <span id="demo"></span></h2>
     <div class="search-container">
         <input type="text" id="search-input" placeholder="Search...">
         <button id="search-button">Search</button>
@@ -124,6 +128,47 @@
     </div>
     <div id="search-results"></div>
     <script>
+        var texts = ['hentai', 'anime', 'anime character', 'genre'];
+        var currentTextIndex = 0;
+        var i = 0;
+        var speed = 100;
+
+        function typeWriter() {
+          if (i < texts[currentTextIndex].length) {
+            document.getElementById("demo").innerHTML += texts[currentTextIndex].charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+          } else {
+            // Wait for 2000ms before starting to delete
+            setTimeout(deleteText, 1500);
+          }
+        }
+
+        function deleteText() {
+          if (i >= 0) {
+            var currentText = texts[currentTextIndex];
+            document.getElementById("demo").innerHTML = currentText.substring(0, i);
+            i--;
+            setTimeout(deleteText, speed);
+          } else {
+            // Move to the next text in the array
+            currentTextIndex++;
+            // Reset the index for the next text
+            i = 0;
+
+            // If all texts are displayed, you can reset to the beginning or do something else
+            if (currentTextIndex === texts.length) {
+              currentTextIndex = 0;
+            }
+
+            // Call typeWriter again for the next text
+            setTimeout(typeWriter, speed);
+          }
+        }
+
+        // Call the typeWriter function to start typing
+        typeWriter();
+
         document.getElementById('search-button').addEventListener('click', function () {
             var searchTerm = document.getElementById('search-input').value;
 
