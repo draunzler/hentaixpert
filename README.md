@@ -1,9 +1,14 @@
 # HentaiXpert
 
+## Update 0.3
+- Added light and dark mode slider 
+- segregated the styles and js scripts in different files
+- as imgur don't work in UK, people from UK couldn't see the `nhentai` icon in the search results section, so changed the image address and issue fixed
+
+
 ## Update 0.2.2
 - When clicked on the search bar, the outline doesn't show anymore
 - Typewriter text effect added to the text below `HentaiXpert` header
-
 
 
 ## Update 0.2.1
